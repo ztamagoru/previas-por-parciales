@@ -9,7 +9,7 @@ Public Class Class1
 
     Sub New()
         Try
-            conn.ConnectionString = ""
+            conn.ConnectionString = "Server=;"
         Catch ex As Exception
 
         End Try
