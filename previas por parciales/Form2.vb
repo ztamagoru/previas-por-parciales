@@ -8,12 +8,25 @@ Public Class Form2
         cbeditorial.Items.Clear()
 
         Dim comando As String = "select nombre from autor"
+        Dim reader As SqlDataReader
 
-        conexion.addcbautor(comando)
+        reader = conexion.executeReader(comando)
+
+        Do While reader.read()
+            cbautor.Items.Add(reader.GetString(0))
+        Loop
+
+        reader.Close()
 
         comando = "select nombre from editorial"
 
-        conexion.addcbeditorial(comando)
+        reader = conexion.executeReader(comando)
+
+        Do While reader.Read()
+            cbeditorial.Items.Add(reader.GetString(0))
+        Loop
+
+        reader.Close()
     End Sub
 
     Private Sub Form2_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

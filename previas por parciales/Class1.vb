@@ -32,46 +32,14 @@ Public Class Class1
         End Try
     End Sub
 
-    Public Sub addcbautor(comando As String)
-        Dim result As String
-
+    Public Function executeReader(comando As String) As SqlDataReader
         Try
-            Dim i As Integer = 0
-
             cmd.CommandText = comando
-
-            reader = cmd.ExecuteReader()
-
-            Do While reader.Read()
-                result = reader.GetString(0)
-                Form2.cbautor.Items.Add(result)
-            Loop
-
-            reader.Close()
-
+            executeReader = cmd.ExecuteReader()
         Catch ex As Exception
             MsgBox(ex.Message, vbOK)
         End Try
-    End Sub
 
-    Public Sub addcbeditorial(comando As String)
-        Dim result As String
-
-        Try
-            Dim i As Integer = 0
-            cmd.CommandText = comando
-
-            reader = cmd.ExecuteReader()
-
-            Do While reader.Read()
-                result = reader.GetString(0)
-                Form2.cbeditorial.Items.Add(result)
-            Loop
-
-            reader.Close()
-
-        Catch ex As Exception
-            MsgBox(ex.Message, vbOK)
-        End Try
-    End Sub
+        Return executeReader
+    End Function
 End Class
